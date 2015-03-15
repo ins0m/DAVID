@@ -6,7 +6,7 @@ DAVID uses component based visualization to allow for creative development and e
 ![DAVID explore session](/doc/img/explore.png)
 
 ### Running DAVID
-* You will require Dartium to run DAVID. Make sure you run a pub install before starting the system.
+* You will require Dartium to run DAVID. Make sure you run a pub install before starting the system. While DAVID is actively maintained I do not have the time to update its internals to the most current version of dart and its dependencies. It was developed against DART SDK 36647.
 * The nativ shell (access to OS files and pSQL) is written in node and located in the core data package. Fire up shell.js to get access to critical resources (again, this is OS level and can harm your system, depending on you extensions).
 
 ###What is DAVID (Dynamic Analysis and Visualization of Interconnected Data) ?
