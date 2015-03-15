@@ -1,5 +1,5 @@
 # DAVID
-A tool for interactive visual exploration of data streams. 
+A tool for interactive visual exploration of complex linked data. 
 
 DAVID uses component based visualization to allow for creative development and exploration of complex, linked data in a web environment. It is capable of visualizing big data on demand and creating multi-machine visualizations via event synchronization between machines. Visual components are extendable and running in their own logical containers. Seperation of concerns is enforced bia language seperation. Programming against DAVID as a designer require Javscript knowledge and your vis library of choice. The logic of the application is written in googles DART language.
 
