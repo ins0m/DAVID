@@ -1,7 +1,7 @@
 name: visualizer
-version: 0.0.1
+version: 0.2.1
 author: alexander waldmann
-description: Visualizer first iteration
+description: Visualizer (DAVID) from MIT AgeLab
 dependencies:
   angular: 0.9.4
   browser: 0.9.0
@@ -9,5 +9,3 @@ dependencies:
   polymer: 0.9.5+2
   unittest: 0.9.3
   serialization: 0.9.1
-  bot:
-    git: https://github.com/kevmoo/bot.dart.git
