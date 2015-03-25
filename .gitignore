@@ -1,0 +1,14 @@
+packages
+pubspec.lock
+.idea/*
+build
+node_modules
+.sass_cache
+.git
+*.avi
+*.ogv
+watcherTasks.xml
+watcherTasks
+workspace.xml
+...
+bower_components

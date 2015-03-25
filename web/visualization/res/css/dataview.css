@@ -1,0 +1,23 @@
+.container-simple {
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc; }
+
+.graph-snap {
+  border-right: 3px dashed #ccc;
+  min-height: 100px; }
+
+.graph-snap:last-child {
+  border-right: none;
+  min-height: 100px; }
+
+.row-snap {
+  border-top: 3px dashed #ccc;
+  min-height: 100px; }
+
+.row-snap:last-child {
+  border-bottom: 3px dashed #ccc;
+  min-height: 100px; }

@@ -1,0 +1,22 @@
+//Created by waldmann on 11.12.13.
+
+
+
+.console
+	.ui.red.inverted.pointing.menu
+		a.active.item
+			| Debugger
+		.right.menu
+			a.ui.item(ng-click="ctrl.toggleConsole()")#console-toggle
+				| Toggle
+	#console-area.hidden(style="overflow:scroll; height:300px")
+		table.ui.inverted.table.segment.sortable
+			thead
+				tr
+					th
+						| time
+					th
+						| type
+					th
+						|msg
+			tbody#console

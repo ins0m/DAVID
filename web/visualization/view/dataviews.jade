@@ -1,0 +1,35 @@
+// Created by waldmann on 11.12.13.
+div(dataviews)
+	.ui.pointing.menu(style="margin-top: 20px;")
+		.item
+			| Sort the library by:
+		a.active.item.red#dataviews-sort-by-name(ng-click="ctrl.sortBy('name')")
+			i.quote.left.icon
+			| Name
+		a.item.teal#dataviews-sort-by-description(ng-click="ctrl.sortBy('description')")
+			i.question.icon
+			| Description
+		a.item.green#dataviews-sort-by-date
+			i.calendar.icon
+			| Date
+		a.item.blue#dataviews-sort-by-graphs
+			i.tasks.icon
+			| Number of graphs
+		.right.menu
+			.item
+
+				.ui.button(ng-click="ctrl.resetData()")
+					i.trash.icon
+					| Reset data
+
+	div(ng-repeat="viewSort in ctrl.values.sortedValues")(style="margin-top:10px")
+		.ui.red.header.criteria.block
+			| {{viewSort.key}}
+		.ui.clearing.divider
+		.ui.three.column.divided.grid
+			.column(ng-repeat="dataviewValue in viewSort.val")
+				dataviewmini(values="dataviewValue", outercontroller="ctrl")
+
+
+// start initializing zhe gui
+script(type='text/javascript', src="dataviews.js")

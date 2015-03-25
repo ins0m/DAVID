@@ -1,0 +1,185 @@
+html{
+    height:100%
+}
+body {
+	font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+	color: #555555;
+	background: url("../img/grid.jpg");
+    background-size: auto;
+    height:100%;
+    margin:0px;
+}
+
+.hidden {
+	display: none !important;
+	visibility: hidden !important; }
+
+video{
+	width:100%;
+}
+
+.ui.pointing.menu{
+	margin: 0;
+}
+
+.transparent-chart{
+	background-color:rgba(255,0,0,0.5);
+}
+.chart-column{
+    margin:0 !important;
+    padding:0 !important;
+    float:left
+}
+.chart-item{
+    margin:0 !important;
+    padding:0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    border-top: none !important;
+}
+.chart-menu{
+    margin:0 !important;
+    padding:0 !important;
+    border-radius: 0 !important;
+    border-top: none !important;
+    box-shadow: none !important;
+}
+.chart-sidebar{
+    height:100% !important;
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom-left-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+    border-top: 1px solid #ddd !important;
+    box-shadow: none !important;
+}
+.chart-sidebar-container{
+    height:100% !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+	margin-bottom: 15px !important;
+}
+.chart-draw-area{
+    width: 100%;
+	min-height: 297px !important;
+    background-color:rgba(255,255,255,0.92) !important;
+}
+
+.chart-draw-area .table{
+    border-radius: 0px;
+}
+
+.chart-top-bar{
+    border-radius: 4px ! important;
+}
+.chart-connection-area{
+    height:100% !important;
+    width:180px !important;
+    border-top: 1px solid #ddd !important;
+    border-left: none !important;
+}
+
+.chart-connection{
+    border-top: 1px solid #ddd !important;
+    border-left: none !important;
+}
+
+.connector-module{
+	border-top: 1px solid #ddd!important;
+}
+
+.chart-module{
+    width:600px;
+    border-top: 1px solid #ddd!important;
+}
+
+.annotation-module{
+	min-width:600px;
+	border-top: 1px solid #ddd!important;
+}
+
+
+.chart-editor-area{
+    margin:0 !important;
+    padding:0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    min-height:0px !important;
+    width:100% !important;
+}
+
+#dataview-settings {
+    position:absolute;
+    right:0px;
+}
+
+#data-call-area {
+	background-color:rgba(0,0,0,0.1) !important;
+}
+
+.graph-title {
+	position:absolute;
+	bottom:0;
+	left:0;
+}
+.graph-info {
+	position:absolute;
+	bottom:0;
+	right:0;
+}
+.view-area {
+	margin-left:20px;
+	margin-right:20px;
+    }
+
+.visible {
+  visibility: visible; }
+
+.hidden {
+  visibility: hidden; }
+
+.ui-draggable {
+}
+
+.ui-draggable-disabled {
+
+}
+
+#load-spinner{
+    border-radius: 0;
+}
+
+.connection-label{
+    color: white;
+    background: #555555;
+    border-radius: 4px;
+    padding: 3px 10px;
+	border: 1px solid #fff;
+}
+
+#css-area{
+	border:10px solid #fff;
+}
+#javascript-area{
+	border:10px solid #fff;
+}
+
+.dataTables_wrapper{
+	background: #555555;
+	color: white;
+}
+
+#landing{
+	display: block;
+	position:absolute;
+	height:auto;
+	bottom:0;
+	top:0;
+	left:0;
+	right:0;
+	z-index: 1000;
+}
+.landing.segment{
+	margin:50px;
+}

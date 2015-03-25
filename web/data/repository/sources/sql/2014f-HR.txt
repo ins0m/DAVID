@@ -1,0 +1,25 @@
+SELECT 
+	r.subject_id AS "subject",
+	r.segment,
+	q.unique_unix_timestamp AS "qrs_timestamp",
+	r.begin_of_data AS "daq_begin_timestamp",
+	r.end_of_data AS "daq_end_timestamp",
+	q.hr AS "HR"
+FROM 
+	"2014-sim-f".qrs q 
+	JOIN 
+	(SELECT  
+		d.subject_id,
+		d.segment,
+		d.unique_unix_timestamp as begin_of_data,
+		lead(d.unique_unix_timestamp) OVER w as end_of_data
+	FROM   "2014-sim-f".daq d
+	WINDOW w AS (PARTITION BY d.subject_id ORDER BY d.unique_unix_timestamp)
+	) r
+	ON (
+
+	    q.subject_id = r.subject_id AND 
+	    q.unique_unix_timestamp BETWEEN r.begin_of_data AND r.end_of_data
+	)
+WHERE q.subject_id IN (105,110)
+GROUP BY r.subject_id,r.segment,r.begin_of_data,r.end_of_data,q.hr, q.unique_unix_timestamp ORDER BY "qrs_timestamp"

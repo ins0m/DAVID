@@ -1,0 +1,72 @@
+//Created by waldmann on 11.12.13.
+div(dataview-new)#dataview-new
+	.ui.grid
+		.thirteen.wide.column
+			.ui.pointing.menu
+				a.red.item.repository(ng-repeat="repo in ctrl.knownRepositories", ng-click="ctrl.selectRepository(repo)")
+					i.open.folder.icon
+					| {{repo.name}}
+			div(ng-if="ctrl.currentRepository != null")
+				.ui.tired.menu
+					.ui.inverted.menu
+						div(ng-repeat="mm in ctrl.currenDataCalls", style="display:inline")
+							a.small.item.datacall(ng-click="ctrl.prepareMethod(mm)", ng-if="ctrl.validName(mm.simpleName)")
+								i.file.icon
+								| {{ ctrl.getCleanMethodName(mm.simpleName) }}
+					.ui.sub.menu
+						.item(ng-repeat="param in ctrl.currentDataCall.parameters")
+							.ui.icon.input.small
+								input.ui.params(type="text",placeholder="{{param.simpleName}}", id="{{param.simpleName}}")
+				div(ng-if="ctrl.currentDataCall != null")
+					.ui.menu
+						a.green.item.visualization-toggle(ng-repeat="vpv in ctrl.knownViewPoints", ng-click="ctrl.toggleVisualization(vpv)", ng-class="{'': !ctrl.selectedViewPoints.contains(vpv), 'inverted green': ctrl.selectedViewPoints.contains(vpv)}")
+							| {{vpv.name}}
+
+					div(ng-repeat="vpv in ctrl.knownViewPoints")
+						div(ng-if="ctrl.containsSelectedViewPoint(vpv)")
+							.ui.inverted.header.criteria.block {{vpv.name}}
+							.ui.fluid.accordion(style="margin-bottom:20px")
+								.title(ng-click="ctrl.toggleVisualizationMetrics(vpv)")
+									i.ui.dropdown.icon
+									| metric of {{vpv.name.replaceAll(' ','-')}}
+								.content
+									div(id="metric-area-{{vpv.name.replaceAll(' ','-')}}")
+										| Metric
+								.title(ng-click="ctrl.toggleVisualizationMetrics(vpv)")
+									i.ui.dropdown.icon
+									| Reverse metric of {{vpv.name.replaceAll(' ','-')}}
+								.content
+									div(id="reversemetric-area-{{vpv.name.replaceAll(' ','-')}}")
+										| Metric
+								.title(ng-click="ctrl.toggleVisualizationMetrics(vpv)")
+									i.ui.dropdown.icon
+									| Manipulator of {{vpv.name.replaceAll(' ','-')}}
+								.content
+									div(id="manipulator-area-{{vpv.name.replaceAll(' ','-')}}")
+										| Metric
+					.ui.positive.button.fluid(ng-click="ctrl.addDataDocument()",ng-if="!ctrl.selectedViewPoints.isEmpty")
+						| Add this selection to the view
+		.three.wide.column
+			.ui.vertical.inverted.menu
+				.ui.inverted.header.item
+					input(type="text",ng-model="ctrl.valueObject.name").form-control
+				div(ng-repeat="dd in ctrl.valueObject.dataDocuments")
+					.ui.red.header.item
+						i.open.folder.icon
+						| {{ dd.dataRepository.name }}
+					a.item(ng-click="ctrl.removeDataDocument(dd)")
+						| {{ dd.dataCall }}
+						.menu
+							.item(ng-repeat="vp in dd.viewPoints")
+								i.file.icon
+								| {{vp.name}}
+				.ui.inverted.header.item
+					input(type="text",ng-model="ctrl.valueObject.description").form-control
+
+				.ui.positive.button.fluid(style="border-radius:0;", ng-click="ctrl.saveDataView()") Save
+				.ui.negative.button.fluid(style="border-radius:0;margin-bottom:4px;") Dismiss
+
+
+
+// start initializing zhe gui
+script(type='text/javascript', src="dataview_new.js")

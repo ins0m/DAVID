@@ -1,0 +1,153 @@
+// Created by waldmann on 11.12.13.
+
+div
+	div#stylesheet-area
+	div.chart-column
+		.ui.pointing.blue.inverted.menu.chart-menu.chart-item.chart-top-bar
+			.item
+				| Analysing "{{ctrl.values.dataSource.dataCall}}"
+			.right.menu
+				a.green.item(ng-click="ctrl.values.observableController.toggleZoom()")
+					i.search.icon
+				a.green.item(ng-click="ctrl.values.observableController.toggleDraggable()")
+					i.pin.icon
+				a.green.item(ng-click="ctrl.values.observableController.toggleBackground()")
+					i.lightbulb.icon
+				a.green.item(ng-click="ctrl.values.observableController.togglePresentation()")
+					i.camera.icon
+				a.green.item(ng-click="ctrl.values.observableController.toggleContainer()")
+					i.down.arrow.icon
+		div#chart-container
+			div.chart-column#overlay-menu
+				.chart-sidebar-container.chart-item
+					.ui.icon.vertical.menu.chart-sidebar.inverted
+						div(ng-repeat="name in ctrl.values.overlayNames")
+							a.green.item(ng-click="ctrl.values.observableController.toggleOverlay(name)")
+								i.terminal.icon
+								| {{name}}
+			div.chart-column#options-bar
+				.chart-sidebar-container.chart-item
+					.ui.icon.vertical.menu.chart-sidebar.inverted
+						a.green.item(ng-click="ctrl.values.observableController.toggleOverlayMenu()")
+							i.magic.icon
+						a.green.item(ng-click="ctrl.values.observableController.toggleOverlayArea()")
+							i.tasks.icon
+						a.green.item(ng-click="ctrl.values.observableController.setUpEndpoint()")
+							i.magnet.icon
+						a.green.item(ng-click="ctrl.values.observableController.toggleConnectionMenu()")
+							i.fork.code.icon
+						a.green.item(ng-click="ctrl.values.observableController.markAllDataDocumentNeighbours()")#neighbour-icon
+							i.users.icon
+
+				.chart-sidebar-container.chart-item
+					.ui.icon.vertical.menu.chart-sidebar.inverted
+						a.green.item(ng-click="ctrl.values.observableController.toggleAnnotationMenu()")
+							i.text.file.icon
+						a.green.item(ng-click="ctrl.values.observableController.editCss()")
+							i.unhide.icon
+						a.green.item(ng-click="ctrl.values.observableController.editJs()")
+							i.code.icon
+			div.chart-column.chart-module
+				.ui.pointing.red.inverted.menu.chart-menu.chart-item
+					a.green.item(ng-click="ctrl.values.observableController.fastBackward()")
+						i.backward.icon
+					a.green.item(ng-click="ctrl.values.observableController.manualTickBackward()")
+						i.step.backward.icon
+					a.green.item(ng-click="ctrl.values.observableController.manualTickForward()")
+						i.step.forward.icon
+					a.green.item(ng-click="ctrl.values.observableController.fastForward()")
+						i.forward.icon
+					a.green.item(ng-click="ctrl.values.observableController.stopTimeTicker()")
+						i.pause.icon
+					a.green.item(ng-click="ctrl.values.observableController.startTimeTicker()")
+						i.play.icon
+					a.item.right(ng-click="ctrl.values.observableController.togglePlaySettingsMenu()")
+						i.settings.icon
+					.item.right
+						i.time.icon
+						| {{ctrl.values.currentTime}}
+				.ui.chart-draw-area.segment.chart-item#graph
+					.ui.active.dimmer#load-spinner
+						.stick-loader
+							.stick
+							.stick
+							.stick
+							.stick
+							.stick
+							.stick
+							.stick-loader-message
+								| Loading data
+
+					div(style="height:300px")
+						| Example content of a graph
+
+					.graph-title
+						| {{ctrl.values.description}} : {{ctrl.values.domID}}
+					#graph-info
+				.ui.pointing.green.inverted.menu.chart-menu#play-settings
+					a.item
+						.ui.small.labeled.input(style="width:150px")
+							input.play-setting-popup(type="number",ng-model="ctrl.values.currentTime",data-content="Current time", data-variation="inverted")
+					a.item
+						.ui.small.labeled.input(style="width:80px")
+							input.play-setting-popup(type="number",ng-model="ctrl.values.tickSpeed",data-content="Tick speed", data-variation="inverted")
+					a.item
+						.ui.small.labeled.input(style="width:80px")
+							input.play-setting-popup(type="number",ng-model="ctrl.values.tickInterval",data-content="Tick interval", data-variation="inverted")
+					a.item
+						.ui.small.labeled.input(style="width:150px")
+							input.play-setting-popup(type="number",ng-model="ctrl.values.timeOffset",data-content="Offset", data-variation="inverted")
+
+				.ui.chart-item#overlay-area
+					.ui.item.chart-editor-area(style="min-height:0px")
+						.ui.inverted.segment(style="margin:0px;border-radius:0px")#overlay-area-top
+							| No data
+						pre(style="margin:0px")
+							code#overlay-area-content
+								| No data
+						#overlay-area-draw
+
+				.ui.black.inverted.menu.chart-menu#annotation-codes
+					a.item(ng-repeat="annotationItem in ctrl.values.dataSource.annotationCodes.selectedCodes",ng-click="ctrl.values.observableController.addAnnotation(annotationItem)")
+							| {{annotationItem.annotationName}}
+							|  (key: {{annotationItem.annotationKey}})
+					a.item#annotation-binding(ng-click="ctrl.values.observableController.toggleAnnotationBinding()")
+						i.icon.keyboard
+						| Key shortcuts
+
+				.chart-item#css-container
+					.chart-editor-area
+						.ui.pointing.right.menu.chart-menu.chart-item
+							a.green.item(ng-click="ctrl.values.observableController.applyCss()")
+								i.checkmark.icon
+								| Apply style
+						#css-area
+				.chart-item#javascript-container
+					.chart-editor-area
+						.ui.pointing.right.menu.chart-menu.chart-item
+							a.green.item(ng-click="ctrl.values.observableController.applyJs()")
+								i.checkmark.icon
+								| Apply script
+						#javascript-area
+			div.chart-column#connection-bar
+				.chart-sidebar-container.chart-item
+					.ui.vertical.menu.chart-sidebar.chart-connection.chart-connection-area.inverted(ng-repeat="vpc in ctrl.values.observer")
+						.ui.header.item
+							| {{vpc.connectionName}}
+						.ui.green.active.item
+							i.checkmark.icon
+							| {{vpc.connectionType}}
+						div(ng-if="vpc.connectionType !=vpc.CONNECTION_ABSOLUTE ")
+							a.green.item(ng-click="vpc.setConnectionType(vpc.CONNECTION_ABSOLUTE)")
+								i.refresh.icon
+								| {{vpc.CONNECTION_ABSOLUTE}}
+						div(ng-if="vpc.connectionType !=vpc.CONNECTION_RELATIVE ")
+							a.green.item(ng-click="vpc.setConnectionType(vpc.CONNECTION_RELATIVE)")
+								i.refresh.icon
+								| {{vpc.CONNECTION_RELATIVE}}
+						div(ng-if="vpc.connectionType !=vpc.CONNECTION_VALUE ")
+							a.green.item(ng-click="vpc.setConnectionType(vpc.CONNECTION_VALUE)")
+								i.refresh.icon
+								| {{vpc.CONNECTION_VALUE}}
+
+

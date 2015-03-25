@@ -1,0 +1,141 @@
+//Created by waldmann on 11.12.13.
+
+doctype html
+html(lang="en", ng-app)
+    head
+        title Visualizer
+        meta(charset="utf-8")
+        meta(http-equiv="X-UA-Compatible",content="IE=edge,chrome=1")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0")
+
+        // general css
+        //link(rel="stylesheet" href="../res/css/bootstrap.css")
+        link(rel="stylesheet" href="../res/bower_components/semantic-ui/build/packaged/css/semantic.css")
+        link(rel="stylesheet" href="../res/bower_components/messenger/build/css/messenger.css")
+        link(rel="stylesheet" href="../res/bower_components/messenger/build/css/messenger-theme-air.css")
+        link(rel="stylesheet" href="../res/bower_components/messenger/build/css/messenger-spinner.css")
+        link(rel="stylesheet" href="../res/bower_components/slickgrid/slick.grid.css")
+        link(rel="stylesheet" href="../res/bower_components/gridster/dist/jquery.gridster.css")
+        link(rel="stylesheet" href="../res/css/spinner.css")
+        link(rel="stylesheet" href="../res/css/visualizer.css")
+
+        // general libs
+        script(type='text/javascript', src="../res/bower_components/jquery/jquery.js")
+        script(type='text/javascript', src="../res/bower_components/jquery-ui/jquery-ui.js")
+        script(type='text/javascript', src="../res/bower_components/semantic-ui/build/packaged/javascript/semantic.js")
+        script(type='text/javascript', src="../res/bower_components/d3/d3.js")
+
+        // custom libs
+        script(type='text/javascript', src="../res/bower_components/cubism/cubism.v1.js")
+        script(type='text/javascript', src="../res/bower_components/jsPlumb/dist/js/jquery.jsPlumb-1.5.5.js")
+        script(type='text/javascript', src="../res/bower_components/datatables/media/js/jquery.dataTables.js")
+        script(type='text/javascript', src="../res/bower_components/popcornjs/popcorn.js")
+        script(type='text/javascript', src="../res/bower_components/messenger/build/js/messenger.js")
+        script(type='text/javascript', src="../res/bower_components/slickgrid/slick.core.js")
+        script(type='text/javascript', src="../res/bower_components/slickgrid/lib/jquery.event.drag-2.2.js")
+        script(type='text/javascript', src="../res/bower_components/slickgrid/slick.grid.js")
+        script(type='text/javascript', src="../res/bower_components/slickgrid/slick.dataview.js")
+        script(type='text/javascript', src="../res/bower_components/gridster/dist/jquery.gridster.js")
+        script(type='text/javascript', src="../res/bower_components/mousetrap/mousetrap.js")
+
+        script(type='text/javascript', src="../res/vendor_js/highstocks/highstock.src.js")
+        script(type='text/javascript', src="../res/vendor_js/highstocks/highcharts-more.js")
+        script(type='text/javascript', src="../res/vendor_js/zoom.js/zoom.js")
+        script(type='text/javascript', src="../res/vendor_js/highlight/highlight.pack.js")
+
+        script(type='text/javascript', src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjXObD-DbC-Bh8_tlfskxikyC8-oFDceA&sensor=false&libraries=geometry")
+
+        // css , js, json editing
+        script(src="../res/bower_components/codemirror/lib/codemirror.js")
+        link(rel="stylesheet", href="../res/bower_components/codemirror/lib/codemirror.css")
+        link(rel="stylesheet", href="../res/bower_components/codemirror/theme/monokai.css")
+        script(src="../res/bower_components/codemirror/mode/css/css.js")
+        script(src="../res/bower_components/codemirror/mode/javascript/javascript.js")
+
+        // visualizer libs + css
+        link(rel="stylesheet" href="../res/css/horizonChart.css")
+        link(rel="stylesheet" href="../res/css/lineChart.css")
+        script(type='text/javascript', src="../chart/viewPoint.js")
+        script(type='text/javascript', src="../chart/viewPointOverlay.js")
+        script(type='text/javascript', src="../chart/horizonChart.js")
+        script(type='text/javascript', src="../chart/lineChart.js")
+        script(type='text/javascript', src="../chart/tableView.js")
+        script(type='text/javascript', src="../chart/videoView.js")
+        script(type='text/javascript', src="../chart/videoViewOverlay.js")
+        script(type='text/javascript', src="../chart/annotationLog.js")
+        script(type='text/javascript', src="../chart/barChart.js")
+        script(type='text/javascript', src="../chart/mapView.js")
+        script(type='text/javascript', src="../chart/pieChart.js")
+        script(type='text/javascript', src="../chart/genericView.js")
+        script(type='text/javascript', src="../chart/speedView.js")
+        script(type='text/javascript', src="../chart/steeringWheel.js")
+        script(type='text/javascript', src="../chart/connector.js")
+
+        // start initializing the gui
+        script(type='text/javascript', src="base.js")
+
+    body(ng-cloak)#home
+        .ui.pointing.menu#master-top-bar
+            a.item#master-sidebar-expand
+                i.left.arrow.icon#master-sidebar-expand-icon
+            .item#view-name
+            .right.menu#right-top-menu
+
+                .ui.dropdown.item
+                    i.icon.desktop
+                    | Background
+                    i.dropdown.icon
+                    .menu
+                        a.item#background-blue-abstract
+                            image.ui.tiny.image(src="../res/img/blue-abstract.jpg")
+                        a.item#background-wood
+                            image.ui.tiny.image(src="../res/img/wood.jpg")
+                        a.item#background-grid
+                            image.ui.tiny.image(src="../res/img/grid.jpg")
+                        a.item#background-black-c
+                            | Black
+                        a.item#background-white
+                            | White
+                .ui.dropdown.item
+                    i.ui.user.icon
+                    | Hello coder
+                    i.dropdown.icon
+                    .menu
+                        a.item
+                            | Log out
+
+        .ui.very.thin.vertical.inverted.sidebar.icon.menu#master-sidebar-small
+            a.item(href="#")
+                i.book.icon
+            a.item(href="#/dataview/new")
+                i.add.icon
+            a.item
+                i.keyboard.icon
+            .item
+            a.item
+                i.code.icon
+            a.item
+                i.doctor.icon
+        .ui.thin.vertical.inverted.sidebar.menu#master-sidebar-big
+            a.item(href="#")
+                | Library
+                i.book.icon
+            a.item(href="#/dataview/new")
+                | New view
+                i.add.icon
+            .item
+            a.item(href="https://github.com/ins0m/DAVID")
+                | Developer
+                i.code.icon
+
+        .view-area
+            ng-view
+
+        //logger
+        console
+        // application loader
+        script(type='text/javascript', src="packages/browser/dart.js")
+        // interop
+        script(type='text/javascript', src="packages/browser/interop.js")
+        // application
+        script(type='application/dart', src="../main.dart")

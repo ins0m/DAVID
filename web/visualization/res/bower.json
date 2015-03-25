@@ -1,0 +1,27 @@
+{
+  "name": "visualizer",
+  "version": "0.2.1",
+  "dependencies": {
+    "modernizr": "2.6.2",
+    "d3": "3.3.10",
+    "jquery-ui": "1.11.2",
+    "jquery": "1.10.2",
+    "bootstrap": "3.0.2",
+    "codemirror":"3.20",
+    "cubism":"1.6.0",
+    "datatables":"1.9.4",
+    "gridster":"0.2.1",
+    "jsPlumb":"1.5.5",
+    "messenger":"1.4.0",
+    "mousetrap":"1.4.6",
+    "nvd3":"v1.1.15b",
+    "popcornjs":"1.3",
+    "semantic-ui":"0.15",
+    "slickgrid":"2.1",
+    "underscore":"1.5.2"
+  },
+  "ignore":[
+  	"fonts"
+  ],
+  "devDependencies": {}
+}

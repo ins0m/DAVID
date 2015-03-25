@@ -1,0 +1,13 @@
+name: visualizer
+version: 0.0.1
+author: alexander waldmann
+description: Visualizer first iteration
+dependencies:
+  angular: 0.9.4
+  browser: 0.9.0
+  js: 0.2.0
+  polymer: 0.9.5+2
+  unittest: 0.9.3
+  serialization: 0.9.1
+  bot:
+    git: https://github.com/kevmoo/bot.dart.git

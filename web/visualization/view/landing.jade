@@ -1,0 +1,24 @@
+//Created by ins0m on 23.02.14.
+div(landing)#landing
+    .ui.dimmer
+        .content
+            .center
+                h1
+                    | Hi! We have not met. Tell me who you are:
+                .ui.two.column.page.grid
+                    .column
+                        .ui.blue.landing.segment
+                            .blue.vertical.fluid.ui.buttons
+                                .ui.fluid.button(ng-repeat="coder in ctrl.coders", ng-click="ctrl.setDataCoder(coder)")
+                                    | {{coder.name}}
+                    .column
+                        .ui.red.landing.segment
+                            .ui.basic.accordion
+                                .active.title
+                                    i.dropdown.icon
+                                    | What's this all about ?
+                                .active.content(style="color:black")
+                                    | DAVID uses component based visualization to allow for creative development and exploration of complex, linked data in a web environment. It is capable of visualizing big data on demand and creating multi-machine visualizations via event synchronization between machines. Visual components are extendable and running in their own logical containers. Seperation of concerns is enforced bia language seperation. Programming against DAVID as a designer require Javscript knowledge and your vis library of choice. The logic of the application is written in googles DART language.
+
+// start initializing zhe gui
+script(type='text/javascript', src="landing.js")
